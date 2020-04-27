@@ -564,10 +564,9 @@ function Install_IRedMail {
 	bzip2 -d iRedMail-0.9.9.tar.bz2
 	tar -xvf iRedMail-0.9.9.tar
 	cd iRedMail-0.9.9/
-	echo "export status_check_new_iredmail=\"DONE\"" > .status
 	chmod +x iRedMail.sh
 	echo "Running iRedMail Installer"
-	./iRedMail.sh
+	CHECK_NEW_IREDMAIL=NO bash iRedMail.sh
 }
 
 PS3="Server Setup Script - Pick an option: "
