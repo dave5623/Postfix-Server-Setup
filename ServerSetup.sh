@@ -13,6 +13,7 @@ debian_initialize() {
 	apt-get -qq -y upgrade > /dev/null 2>&1
 	apt-get install -qq -y nmap > /dev/null 2>&1
 	apt-get install -qq -y git > /dev/null 2>&1
+	apt-get install -qq -y bzip2 > /dev/null 2>&1
 	apt-get remove -qq -y exim4 exim4-base exim4-config exim4-daemon-light > /dev/null 2>&1
 	rm -r /var/log/exim4/ > /dev/null 2>&1
 
@@ -558,7 +559,8 @@ function Install_GoPhish {
 function Install_IRedMail {
 	echo "Downloading iRedMail"
 	wget https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.9.9.tar.bz2
-	tar -xvf iRedMail-0.9.9.tar.bz2
+	bzip2 -d iRedMail-0.9.9.tar.bz2
+	tar -xvf iRedMail-0.9.9.tar
 	cd iRedMail-0.9.9/
 	chmod +x iRedMail.sh
 	echo "Running iRedMail Installer"
