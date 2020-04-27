@@ -288,12 +288,13 @@ install_postfix_dovecot() {
 	opendkim-genkey -s mail -d "${primary_domain}"
 	echo 'SOCKET="inet:12301"' >> /etc/default/opendkim
 	chown -R opendkim:opendkim /etc/opendkim
-
+	chown -R opendmarc:opendmarc /var/run/opendmarc/
+	
 	echo "Configuring opendmarc"
 
 	cat <<-EOF > /etc/opendmarc.conf
 	AuthservID ${primary_domain}
-	PidFile /var/run/opendmarc.pid
+	PidFile /var/run/opendmarc/opendmarc.pid
 	RejectFailures false
 	Syslog true
 	TrustedAuthservIDs ${primary_domain}
