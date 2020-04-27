@@ -57,6 +57,7 @@ ubuntu_initialize() {
 	apt-get -qq -y upgrade > /dev/null 2>&1
 	apt-get install -qq -y nmap > /dev/null 2>&1
 	apt-get install -qq -y git > /dev/null 2>&1
+	apt-get install -qq -y bzip2 > /dev/null 2>&1
 	rm -r /var/log/exim4/ > /dev/null 2>&1
 
 	update-rc.d nfs-common disable > /dev/null 2>&1
