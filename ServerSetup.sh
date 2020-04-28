@@ -563,9 +563,10 @@ function Install_GoPhish {
 function Install_IRedMail {
 	echo "Downloading iRedMail"
 	wget https://bitbucket.org/zhb/iredmail/downloads/iRedMail-0.9.9.tar.bz2
+	mkdir -p /var/iRedMail
 	bzip2 -d iRedMail-0.9.9.tar.bz2
-	tar -xvf iRedMail-0.9.9.tar
-	cd iRedMail-0.9.9/
+	tar -xvf iRedMail-0.9.9.tar -C /var/iRedMail
+	cd /var/iRedMail/
 	chmod +x iRedMail.sh
 	echo "Running iRedMail Installer"
 	CHECK_NEW_IREDMAIL=NO bash iRedMail.sh
