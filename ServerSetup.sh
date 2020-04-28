@@ -528,9 +528,10 @@ setupSSH(){
 
 function Install_GoPhish {
 	apt-get install unzip > /dev/null 2>&1
+	cwd=$(pwd)	
 	wget https://github.com/gophish/gophish/releases/download/v0.9.0/gophish-v0.9.0-linux-64bit.zip
-	unzip gophish-v0.9.0-linux-64bit.zip -d gophish
-	cd gophish
+	unzip gophish-v0.9.0-linux-64bit.zip -d /var/opt/gophish
+	cd /var/opt/gophish
         sed -i 's/"listen_url" : "127.0.0.1:3333"/"listen_url" : "0.0.0.0:3333"/g' config.json
 	read -r -p "Do you want to add an SSL certificate to your GoPhish? [y/N] " response
 	case "$response" in
@@ -555,6 +556,7 @@ function Install_GoPhish {
         	echo "GoPhish installed"
         	;;
 	esac
+	cd $cwd
 }
 
 
